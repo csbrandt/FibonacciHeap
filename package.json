@@ -1,7 +1,7 @@
 {
   "name": "fibonacciheap",
-  "version": "1.0.0",
-  "description": "A collection of data structures",
+  "version": "1.0.1",
+  "description": "Modular version of [Tyriar/js-data-structures/lib/fibonacci-heap.js](https://github.com/Tyriar/js-data-structures/blob/master/lib/fibonacci-heap.js)",
   "main": "index.js",
   "scripts": {
     "test": "make test",
