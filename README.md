@@ -1,10 +1,10 @@
-[![NPM](https://nodei.co/npm/fibonacci-heap.png?downloads=true&stars=true)](https://nodei.co/npm/fibonacci-heap/)
+[![NPM](https://nodei.co/npm/fibonacciheap.png?downloads=true&stars=true)](https://nodei.co/npm/fibonacciheap/)
 
 Modular version of [Tyriar/js-data-structures/lib/fibonacci-heap.js](https://github.com/Tyriar/js-data-structures/blob/master/lib/fibonacci-heap.js)
 
 Installation
 -------------
-    $ npm install @csbrandt/fibonacci-heap
+    $ npm install fibonacciheap
 
 Methods
 --------
