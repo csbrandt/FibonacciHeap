@@ -1,75 +1,93 @@
-# js-data-structures [![NPM version](http://img.shields.io/npm/v/js-data-structures.svg?style=flat)](https://www.npmjs.org/package/js-data-structures)
+[![NPM](https://nodei.co/npm/FibonacciHeap.png?downloads=true&stars=true)](https://nodei.co/npm/FibonacciHeap/)
 
-[![Build Status](http://img.shields.io/travis/Tyriar/js-data-structures.svg?style=flat)](http://travis-ci.org/Tyriar/js-data-structures)
-[![Code Climate](http://img.shields.io/codeclimate/github/Tyriar/js-data-structures.svg?style=flat)](https://codeclimate.com/github/Tyriar/js-data-structures)
-[![Code coverage](http://img.shields.io/codeclimate/coverage/github/Tyriar/js-data-structures.svg?style=flat)](https://codeclimate.com/github/Tyriar/js-data-structures)
+Modular version of [Tyriar/js-data-structures/lib/fibonacci-heap.js](https://github.com/Tyriar/js-data-structures/blob/master/lib/fibonacci-heap.js)
 
-A collection of data structures written in JavaScript. Each data structure is enclosed in its own file, wrapped in a [Universal Module Definition (UMD)][1] API to make it easier to use across multiple platforms.
+Installation
+-------------
+    $ npm install FibonacciHeap
 
-Detailed information on the complexity of each data structure is located [here][3]. To learn more about how some of the data structures are implemented, have a look at the [technical articles on my blog][2].
+Methods
+--------
+    clear()
+> Clears the heap's data, making it an empty heap.
+>
 
-## Installing
+    decreaseKey(node, newKey)
+> **node**:  *Node*, the node to be decreased
+>
+> **newKey**:  *number*, the new key value
+>
 
-```bash
-npm install --save js-data-structures
-```
+    delete(node)
+> **node**:  *Node*, the node to remove from the heap
+>
 
-## Including
+    extractMinimum()
+> **Returns**
+>
+> *Node*, the node with the smallest key
 
-```javascript
-var FibonacciHeap = require("js-data-structures").FibonacciHeap;
-```
+    findMinimum()
+> **Returns**
+>
+> *Node*, the node with the smallest key
 
-## Usage
+    insert(key, value)
+> **key**:  *number*,  
+>
+> **value**:  *object*, any value associated with the node to insert
+>
+> **Returns**
+>
+> *Node*, the node that was inserted
 
-See [the source files][3] for a list of public interfaces on each data structure, here is an example for the [Fibonacci heap][5].
+    isEmpty()
+> **Returns**
+>
+> *boolean*, true if the heap is empty
 
-```javascript
-var heap = new FibonacciHeap();
-heap.insert(3);
-heap.insert(7);
-heap.insert(8);
-heap.insert(1);
-heap.insert(2);
+    size()  
+> **Returns**
+>
+> *number*, the amount of nodes in the heap
 
-while (!heap.isEmpty()) {
-  console.log(heap.extractMinimum());
-}
-```
+    union(other)
+> **other**:  *FibonacciHeap*, the FibonacciHeap to union with this one
+>
 
+    compare(a, b)  
+> **a**:  *Node*, a node to compare
+>
+> **b**:  *Node*, a node to compare
+>
+> **Returns**
+>
+> *number*, 1 if `a` has a larger key than `b`, -1 if `b` has a larger key than `a` and 0 if they are equal
 
-## Contributing
+Running Tests
+--------------
+Install the development dependencies:
 
-I'd love to get some contributions for other data structures, if you want to make a pull request try to follow the existing style of the code and make sure you add tests for the new data structure.
+    $ npm install
 
-### Testing locally
+Then run the tests:
 
-```bash
-npm install
-npm test
+    $ npm test
 
-# generate coverage report in ./coverage/
-grunt coverage
-```
+Code Coverage
+--------------
+Install the development dependencies:
 
+    $ npm install
 
+Then run coverage
 
-## License
+    $ npm run coverage
 
-MIT © [Daniel Imms](http://www.growingwiththeweb.com)
+View coverage reports
 
+    $ firefox coverage/lcov-report/index.html
 
-
-## See also
-
-* [js-design-patterns](https://github.com/Tyriar/js-design-patterns)
-* [js-interview-questions](https://github.com/Tyriar/js-interview-questions)
-* [js-sorting](https://github.com/Tyriar/js-sorting)
-
-
-
-  [1]: https://github.com/umdjs/umd/blob/master/returnExportsGlobal.js
-  [2]: http://www.growingwiththeweb.com/p/explore.html?t=Data%20structure
-  [3]: lib
-  [4]: https://github.com/Tyriar/js-sorting
-  [5]: lib/fibonacci-heap.js
+Browser Bundle
+---------------
+    $ npm run build

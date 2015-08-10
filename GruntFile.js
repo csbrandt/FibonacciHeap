@@ -1,49 +1,77 @@
 module.exports = function(grunt) {
-  'use strict';
+   // Load grunt tasks automatically
+   require('load-grunt-tasks')(grunt);
 
-  grunt.config.init({
-    pkg: grunt.file.readJSON('package.json')
-  });
-
-  grunt.loadNpmTasks('grunt-eslint');
-  grunt.config('eslint', {
-    dist: {
-      options: {
-        configFile: '.eslintrc',
+   // Project configuration.
+   grunt.initConfig({
+      jshint: {
+         options: {
+            undef: true,
+            curly: true,
+            eqeqeq: true,
+            eqnull: true,
+            browser: true,
+            shadow: true,
+            jquery: true,
+            couch: true,
+            node: true,
+            globals: {
+               "define": false,
+               "require": false
+            }
+         },
+         all: ['./*.js']
       },
-      src: ['lib/**/*.js']
-    }
-  });
-
-  grunt.loadNpmTasks('grunt-jasmine-node-coverage');
-  grunt.config('jasmine_node', {
-    coverage: {
-      options: {
-        coverage: {},
-        forceExit: true,
-        match: '.',
-        matchAll: false,
-        specFolders: ['test'],
-        extensions: 'js',
-        specNameMatcher: 'spec',
-        captureExceptions: true,
-        junitreport: {
-          report: false,
-          savePath : './build/reports/jasmine/',
-          useDotNotation: true,
-          consolidate: true
-        }
+      jsbeautifier: {
+         files: ['./*.js'],
+         options: {
+            //config: "path/to/configFile",
+            html: {
+               braceStyle: "expand",
+               indentChar: " ",
+               indentScripts: "keep",
+               indentSize: 3,
+               maxPreserveNewlines: 10,
+               preserveNewlines: true,
+               unformatted: ["a", "sub", "sup", "b", "i", "u"],
+               wrapLineLength: 0
+            },
+            css: {
+               indentChar: " ",
+               indentSize: 3
+            },
+            js: {
+               braceStyle: "collapse",
+               breakChainedMethods: false,
+               e4x: false,
+               evalCode: false,
+               indentChar: " ",
+               indentLevel: 0,
+               indentSize: 3,
+               indentWithTabs: false,
+               jslintHappy: false,
+               keepArrayIndentation: true,
+               keepFunctionIndentation: false,
+               maxPreserveNewlines: 10,
+               preserveNewlines: true,
+               spaceBeforeConditional: true,
+               spaceInParen: false,
+               unescapeStrings: false,
+               wrapLineLength: 0
+            }
+         }
       },
-      src: ['**/*.js']
-    }
-  });
+      coffee: {
+         compile: {
+            expand: true,
+            cwd: './',
+            src: ['test/**/*.coffee'],
+            ext: '.js'
 
-  grunt.registerTask('test', [
-    'eslint',
-    'jasmine_node'
-  ]);
+         }
+      }
+   });
 
-  grunt.registerTask('default', [
-    'test'
-  ]);
+   grunt.registerTask('default', ['jsbeautifier', 'jshint', 'coffee:compile']);
+
 };

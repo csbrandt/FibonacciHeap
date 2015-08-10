@@ -1,157 +1,163 @@
-module.exports = function (Heap) {
-  'use strict';
+(function() {
+  var expect;
 
-  var heap;
+  expect = require('expect.js');
 
-  beforeEach(function () {
-    heap = new Heap();
-  });
-
-  describe('when inserting 1000 in-order elements', function () {
-    beforeEach(function () {
-      for (var i = 0; i < 1000; i++) {
-        heap.insert(i, i);
-      }
+  module.exports = function(Heap) {
+    'use strict';
+    var heap;
+    heap = null;
+    beforeEach(function() {
+      return heap = new Heap();
     });
-
-    describe('then extracting 1000 elements', function () {
-      beforeEach(function () {
-        for (var i = 0; i < 1000; i++) {
-          heap.extractMinimum();
+    describe('when inserting 1000 in-order elements', function() {
+      beforeEach(function() {
+        var i, j, results;
+        results = [];
+        for (i = j = 0; j <= 999; i = ++j) {
+          results.push(heap.insert(i, i));
         }
+        return results;
       });
-
-      it('should give an empty heap', function () {
-        expect(heap.isEmpty()).toBe(true);
-      });
-    });
-  });
-
-  describe('when inserting 1000 reversed elements', function () {
-    beforeEach(function () {
-      for (var i = 0; i < 1000; i++) {
-        heap.insert(i, i);
-      }
-    });
-
-    describe('then extracting 1000 elements', function () {
-      beforeEach(function () {
-        for (var i = 0; i < 1000; i++) {
-          heap.extractMinimum();
-        }
-      });
-
-      it('should give an empty heap', function () {
-        expect(heap.isEmpty()).toBe(true);
-      });
-    });
-  });
-
-  describe('when inserting 1000 pseudo-randomised elements', function () {
-    beforeEach(function () {
-      for (var i = 0; i < 1000; i++) {
-        if (i % 2 === 0) {
-          heap.insert(i, i);
-        } else {
-          heap.insert(999 - i, 999 - i);
-        }
-      }
-    });
-
-    describe('then extracting 1000 elements', function () {
-      beforeEach(function () {
-        for (var i = 0; i < 1000; i++) {
-          heap.extractMinimum();
-        }
-      });
-
-      describe('then extracting 1000 elements', function () {
-        beforeEach(function () {
-
+      return describe('then extracting 1000 elements', function() {
+        beforeEach(function() {
+          var i, j, results;
+          results = [];
+          for (i = j = 0; j <= 999; i = ++j) {
+            results.push(heap.extractMinimum());
+          }
+          return results;
         });
-
-        it('should give an empty heap', function () {
-          expect(heap.isEmpty()).toBe(true);
+        return it('should give an empty heap', function() {
+          return expect(heap.isEmpty()).to.be(true);
         });
       });
     });
-  });
-
-  if (Heap.prototype.decreaseKey) {
-    describe('when inserting, decreasing a key, then extracting', function () {
-      it('should be able to remove all elements', function () {
-        var i;
-        var nodes = [];
-        for (i = 0; i < 1000; i++) {
-          nodes.push(heap.insert(i, i));
+    describe('when inserting 1000 reversed elements', function() {
+      beforeEach(function() {
+        var i, j, results;
+        results = [];
+        for (i = j = 0; j <= 999; i = ++j) {
+          results.push(heap.insert(i, i));
         }
-
-        heap.decreaseKey(nodes[20], -10);
-
-        for (i = 500; i < 1500; i++) {
-          heap.insert(i, i);
-        }
-
-        for (i = 0; i < 2000; i++) {
-          heap.extractMinimum();
-        }
-        expect(heap.isEmpty()).toBe(true);
+        return results;
+      });
+      return describe('then extracting 1000 elements', function() {
+        beforeEach(function() {
+          var i, j, results;
+          results = [];
+          for (i = j = 0; j <= 999; i = ++j) {
+            results.push(heap.extractMinimum());
+          }
+          return results;
+        });
+        return it('should give an empty heap', function() {
+          return expect(heap.isEmpty()).to.be(true);
+        });
       });
     });
-
-    describe('when inserting, decreasing multiple keys, then extracting', function () {
-      it('should be able to remove all elements', function () {
-        var i;
-        var nodes = [];
-        for (i = 0; i < 1000; i++) {
-          nodes.push(heap.insert(i, i));
+    describe('when inserting 1000 pseudo-randomised elements', function() {
+      beforeEach(function() {
+        var i, j, results;
+        results = [];
+        for (i = j = 0; j <= 999; i = ++j) {
+          if (i % 2 === 0) {
+            results.push(heap.insert(i, i));
+          } else {
+            results.push(heap.insert(999 - i, 999 - i));
+          }
         }
-
-        for (i = 0; i < 1000; i+=50) {
-          heap.decreaseKey(nodes[i], -i - 5);
-        }
-
-        for (i = 500; i < 1500; i++) {
-          heap.insert(i, i);
-        }
-
-        for (i = 0; i < 2000; i++) {
-          heap.extractMinimum();
-        }
-        expect(heap.isEmpty()).toBe(true);
+        return results;
+      });
+      return describe('then extracting 1000 elements', function() {
+        beforeEach(function() {
+          var i, j, results;
+          results = [];
+          for (i = j = 0; j <= 999; i = ++j) {
+            results.push(heap.extractMinimum());
+          }
+          return results;
+        });
+        return describe('then extracting 1000 elements', function() {
+          beforeEach(function() {});
+          return it('should give an empty heap', function() {
+            return expect(heap.isEmpty()).to.be(true);
+          });
+        });
       });
     });
-  }
-
-  it('should handle 1000 shuffled elements', function () {
-    var i;
-    var input = [];
-    for (i = 0; i < 1000; i++) {
-      input.push(i);
+    if (Heap.prototype.decreaseKey) {
+      describe('when inserting, decreasing a key, then extracting', function() {
+        return it('should be able to remove all elements', function() {
+          var i, j, k, l, nodes;
+          nodes = [];
+          for (i = j = 0; j <= 999; i = ++j) {
+            nodes.push(heap.insert(i, i));
+          }
+          heap.decreaseKey(nodes[20], -10);
+          for (i = k = 500; k <= 1499; i = ++k) {
+            heap.insert(i, i);
+          }
+          for (i = l = 0; l <= 1999; i = ++l) {
+            heap.extractMinimum();
+          }
+          return expect(heap.isEmpty()).to.be(true);
+        });
+      });
+      describe('when inserting, decreasing multiple keys, then extracting', function() {
+        return it('should be able to remove all elements', function() {
+          var i, j, k, l, nodes;
+          nodes = [];
+          for (i = j = 0; j <= 999; i = ++j) {
+            nodes.push(heap.insert(i, i));
+          }
+          i = 0;
+          while (true) {
+            heap.decreaseKey(nodes[i], -i - 5);
+            i += 50;
+            if (!(i < 1000)) {
+              break;
+            }
+          }
+          for (i = k = 500; k <= 1499; i = ++k) {
+            heap.insert(i, i);
+          }
+          for (i = l = 0; l <= 1999; i = ++l) {
+            heap.extractMinimum();
+          }
+          return expect(heap.isEmpty()).to.be(true);
+        });
+      });
     }
-    // shuffle
-    for (i = 0; i < 1000; i++) {
-      var swapWith = Math.floor(Math.random() * 1000);
-      var temp = input[i];
-      input[i] = input[swapWith];
-      input[swapWith] = temp;
-    }
-    // insert
-    for (i = 0; i < 1000; i++) {
-      heap.insert(input[i], null);
-    }
-    // extract
-    var output = [];
-    var errorReported = false;
-    var counter = 0;
-    while (!heap.isEmpty()) {
-      output.push(heap.extractMinimum().key);
-      if (!errorReported && counter !== output[output.length - 1]) {
-        expect('the heap property was not maintained').toBe('0, 1, 2, ..., 997, 998, 999');
-        errorReported = true;
+    return it('should handle 1000 shuffled elements', function() {
+      i;
+      var counter, errorReported, i, input, j, k, l, output, swapWith, temp;
+      input = [];
+      for (i = j = 0; j <= 999; i = ++j) {
+        input.push(i);
       }
-      counter++;
-    }
-    expect(output.length).toBe(1000);
-  });
-};
+      for (i = k = 0; k <= 999; i = ++k) {
+        swapWith = Math.floor(Math.random() * 1000);
+        temp = input[i];
+        input[i] = input[swapWith];
+        input[swapWith] = temp;
+      }
+      for (i = l = 0; l <= 999; i = ++l) {
+        heap.insert(input[i], null);
+      }
+      output = [];
+      errorReported = false;
+      counter = 0;
+      while (!heap.isEmpty()) {
+        output.push(heap.extractMinimum().key);
+        if (!errorReported && counter !== output[output.length - 1]) {
+          expect('the heap property was not maintained').to.be('0, 1, 2, ..., 997, 998, 999');
+          errorReported = true;
+        }
+        counter++;
+      }
+      return expect(output.length).to.be(1000);
+    });
+  };
+
+}).call(this);

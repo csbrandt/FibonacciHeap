@@ -1,32 +1,45 @@
 {
-  "name": "js-data-structures",
-  "version": "1.0.5",
+  "name": "FibonacciHeap",
+  "version": "1.0.0",
   "description": "A collection of data structures",
+  "main": "index.js",
   "scripts": {
-    "test": "jasmine-node ."
+    "test": "make test",
+    "coverage": "istanbul cover _mocha test --recursive -- -u      exports -R spec",
+    "dist": "browserify index.js > dist/bundle.js",
+    "build": "grunt && npm run dist"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tyriar/js-data-structures.git"
+    "url": "https://github.com/csbrandt/FibonacciHeap.git"
   },
   "keywords": [
     "algorithm",
     "computer science",
     "data structure",
-    "heap",
-    "tree"
+    "heap"
   ],
-  "author": "Daniel Imms (http://www.growingwiththeweb.com)",
-  "license": "MIT",
+  "contributors": [{
+     "name": "Daniel Imms",
+     "url": "https://github.com/Tyriar"
+  }, {
+     "name": "csbrandt",
+     "url": "https://github.com/csbrandt"
+  }],
+  "license": "MPL-2.0",
   "bugs": {
     "url": "https://github.com/Tyriar/js-data-structures/issues"
   },
   "homepage": "https://github.com/Tyriar/js-data-structures",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-eslint": "^13.0.0",
-    "grunt-jasmine-node-coverage": "^0.4.1",
-    "jasmine-node": "^1.14.5",
-    "jasmine-reporters": ">=0.2.0 <2.0.0"
+     "browserify": "^10.2.4",
+     "expect.js": "^0.3.1",
+     "grunt": "^0.4.5",
+     "grunt-contrib-coffee": "^0.13.0",
+     "grunt-contrib-jshint": "^0.11.2",
+     "grunt-jsbeautifier": "^0.2.10",
+     "istanbul": "^0.3.17",
+     "load-grunt-tasks": "^3.2.0",
+     "mocha": "^2.2.5"
   }
 }
