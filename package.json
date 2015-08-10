@@ -1,5 +1,5 @@
 {
-  "name": "FibonacciHeap",
+  "name": "fibonacciheap",
   "version": "1.0.0",
   "description": "A collection of data structures",
   "main": "index.js",
