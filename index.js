@@ -270,6 +270,8 @@ function Node(key, value) {
    this.isMinimum = undefined;
 }
 
+FibonacciHeap.Node = Node;
+
 // This Iterator is used to simplify the consolidate() method. It works by
 // gathering a list of the nodes in the list in the constructor since the
 // nodes can change during consolidation.
