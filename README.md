@@ -1,6 +1,11 @@
 [![NPM](https://nodei.co/npm/fibonacciheap.png?downloads=true&stars=true)](https://nodei.co/npm/fibonacciheap/)
 
-Modular version of [Tyriar/js-data-structures/lib/fibonacci-heap.js](https://github.com/Tyriar/js-data-structures/blob/master/lib/fibonacci-heap.js)
+
+| Algorithm               | clear  | decreaseKey | delete     | extractMinimum | findMinimum | insert   | isEmpty | size | union    |
+|------------------------|-----------|-----------|--------|-------------|------------|----------------|-------------|----------|---------|------|----------|
+| [Fibonacci heap](https://en.wikipedia.org/wiki/Fibonacci_heap)  | Θ(1)\* | Θ(1)\*      | O(log n)\* | O(log n)\*     | Θ(1)        | Θ(1)     | Θ(1)    | Θ(n) | Θ(1)    |
+
+\* amortised
 
 Installation
 -------------
