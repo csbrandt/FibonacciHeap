@@ -1,5 +1,6 @@
 [![NPM](https://nodei.co/npm/fibonacciheap.png?downloads=true&stars=true)](https://nodei.co/npm/fibonacciheap/)
 
+**WARNING:** This module is now deprecated. Please replace with @tyriar/fibonacci-heap
 
 | Algorithm               | clear  | decreaseKey | delete     | extractMinimum | findMinimum | insert   | isEmpty | size | union    |
 |------------------------|--------|-------------|------------|----------------|-------------|----------|---------|------|----------|
